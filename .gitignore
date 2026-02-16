@@ -1,0 +1,21 @@
+# Common
+.DS_Store
+.vscode
+.idea
+*.log
+
+# Frontend (if managed at root, otherwise handled in frontend/.gitignore)
+node_modules/
+dist/
+build/
+.env
+.env.local
+
+# Backend
+.zig-cache/
+zig-out/
+backend/data/*.sqlite
+!backend/data/seed.json
+*.exe
+*.pdb
+*.obj

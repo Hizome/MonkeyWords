@@ -1,0 +1,182 @@
+[
+    {
+        "romaji": "neko",
+        "word": "猫",
+        "pron": "ねこ",
+        "level": 1
+    },
+    {
+        "romaji": "inu",
+        "word": "犬",
+        "pron": "いぬ",
+        "level": 1
+    },
+    {
+        "romaji": "mizu",
+        "word": "水",
+        "pron": "みず",
+        "level": 1
+    },
+    {
+        "romaji": "hon",
+        "word": "本",
+        "pron": "ほん",
+        "level": 1
+    },
+    {
+        "romaji": "taberu",
+        "word": "食べる",
+        "pron": "たべる",
+        "level": 1
+    },
+    {
+        "romaji": "nomu",
+        "word": "飲む",
+        "pron": "のむ",
+        "level": 1
+    },
+    {
+        "romaji": "miru",
+        "word": "見る",
+        "pron": "みる",
+        "level": 1
+    },
+    {
+        "romaji": "iku",
+        "word": "行く",
+        "pron": "いく",
+        "level": 1
+    },
+    {
+        "romaji": "kuru",
+        "word": "来る",
+        "pron": "くる",
+        "level": 1
+    },
+    {
+        "romaji": "benkyou",
+        "word": "勉強",
+        "pron": "べんきょう",
+        "level": 1
+    },
+    {
+        "romaji": "shigoto",
+        "word": "仕事",
+        "pron": "しごと",
+        "level": 1
+    },
+    {
+        "romaji": "tomodachi",
+        "word": "友達",
+        "pron": "ともだち",
+        "level": 1
+    },
+    {
+        "romaji": "ie",
+        "word": "家",
+        "pron": "いえ",
+        "level": 1
+    },
+    {
+        "romaji": "gakkou",
+        "word": "学校",
+        "pron": "がっこう",
+        "level": 1
+    },
+    {
+        "romaji": "sakana",
+        "word": "魚",
+        "pron": "さかな",
+        "level": 1
+    },
+    {
+        "romaji": "niku",
+        "word": "肉",
+        "pron": "にく",
+        "level": 1
+    },
+    {
+        "romaji": "yasai",
+        "word": "野菜",
+        "pron": "やさい",
+        "level": 1
+    },
+    {
+        "romaji": "kudamono",
+        "word": "果物",
+        "pron": "くだもの",
+        "level": 1
+    },
+    {
+        "romaji": "cha",
+        "word": "茶",
+        "pron": "ちゃ",
+        "level": 1
+    },
+    {
+        "romaji": "sake",
+        "word": "酒",
+        "pron": "さけ",
+        "level": 1
+    },
+    {
+        "romaji": "tenki",
+        "word": "天气",
+        "pron": "てんき",
+        "level": 1
+    },
+    {
+        "romaji": "ame",
+        "word": "雨",
+        "pron": "あめ",
+        "level": 1
+    },
+    {
+        "romaji": "yuki",
+        "word": "雪",
+        "pron": "ゆき",
+        "level": 1
+    },
+    {
+        "romaji": "hana",
+        "word": "花",
+        "pron": "はな",
+        "level": 1
+    },
+    {
+        "romaji": "yama",
+        "word": "山",
+        "pron": "やま",
+        "level": 1
+    },
+    {
+        "romaji": "umi",
+        "word": "海",
+        "pron": "うみ",
+        "level": 1
+    },
+    {
+        "romaji": "sora",
+        "word": "空",
+        "pron": "そら",
+        "level": 1
+    },
+    {
+        "romaji": "hikari",
+        "word": "光",
+        "pron": "ひかり",
+        "level": 1
+    },
+    {
+        "romaji": "oto",
+        "word": "音",
+        "pron": "おと",
+        "level": 1
+    },
+    {
+        "romaji": "michi",
+        "word": "道",
+        "pron": "みち",
+        "level": 1
+    }
+]

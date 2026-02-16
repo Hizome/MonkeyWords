@@ -1,0 +1,182 @@
+[
+    {
+        "romaji": "keiyaku",
+        "word": "契約",
+        "pron": "けいやく",
+        "level": 2
+    },
+    {
+        "romaji": "shoumei",
+        "word": "証明",
+        "pron": "しょうめい",
+        "level": 2
+    },
+    {
+        "romaji": "kanri",
+        "word": "管理",
+        "pron": "かんり",
+        "level": 2
+    },
+    {
+        "romaji": "keikaku",
+        "word": "計画",
+        "pron": "けいかく",
+        "level": 2
+    },
+    {
+        "romaji": "houhou",
+        "word": "方法",
+        "pron": "ほうほう",
+        "level": 2
+    },
+    {
+        "romaji": "kijyun",
+        "word": "基準",
+        "pron": "きじゅん",
+        "level": 2
+    },
+    {
+        "romaji": "doui",
+        "word": "同意",
+        "pron": "どうい",
+        "level": 2
+    },
+    {
+        "romaji": "henkou",
+        "word": "変更",
+        "pron": "へんこう",
+        "level": 2
+    },
+    {
+        "romaji": "kakunin",
+        "word": "確認",
+        "pron": "かくにん",
+        "level": 2
+    },
+    {
+        "romaji": "sonzai",
+        "word": "存在",
+        "pron": "そんざい",
+        "level": 2
+    },
+    {
+        "romaji": "kekka",
+        "word": "結果",
+        "pron": "けっか",
+        "level": 2
+    },
+    {
+        "romaji": "mokuhyou",
+        "word": "目標",
+        "pron": "もくひょう",
+        "level": 2
+    },
+    {
+        "romaji": "shisetsu",
+        "word": "施設",
+        "pron": "しせつ",
+        "level": 2
+    },
+    {
+        "romaji": "kyouyuu",
+        "word": "共有",
+        "pron": "きょうゆう",
+        "level": 2
+    },
+    {
+        "romaji": "jishin",
+        "word": "自信",
+        "pron": "じしん",
+        "level": 2
+    },
+    {
+        "romaji": "kaiketsu",
+        "word": "解決",
+        "pron": "かいけつ",
+        "level": 2
+    },
+    {
+        "romaji": "shinkeisanshitsu",
+        "word": "神経算質",
+        "pron": "しんけいさんしつ",
+        "level": 2
+    },
+    {
+        "romaji": "fukuzatsu",
+        "word": "複雑",
+        "pron": "ふくざつ",
+        "level": 2
+    },
+    {
+        "romaji": "kanousei",
+        "word": "可能性",
+        "pron": "かのうせい",
+        "level": 2
+    },
+    {
+        "romaji": "eikyou",
+        "word": "影響",
+        "pron": "えいきょう",
+        "level": 2
+    },
+    {
+        "romaji": "kouka",
+        "word": "効果",
+        "pron": "こうか",
+        "level": 2
+    },
+    {
+        "romaji": "shigen",
+        "word": "資源",
+        "pron": "しげん",
+        "level": 2
+    },
+    {
+        "romaji": "kankyou",
+        "word": "環境",
+        "pron": "かんきょう",
+        "level": 2
+    },
+    {
+        "romaji": "keizai",
+        "word": "経済",
+        "pron": "けいざい",
+        "level": 2
+    },
+    {
+        "romaji": "seiji",
+        "word": "政治",
+        "pron": "せいじ",
+        "level": 2
+    },
+    {
+        "romaji": "bunka",
+        "word": "文化",
+        "pron": "ぶんか",
+        "level": 2
+    },
+    {
+        "romaji": "shakai",
+        "word": "社会",
+        "pron": "しゃかい",
+        "level": 2
+    },
+    {
+        "romaji": "gijutsu",
+        "word": "技術",
+        "pron": "ぎじゅつ",
+        "level": 2
+    },
+    {
+        "romaji": "jouhou",
+        "word": "情報",
+        "pron": "じょうほう",
+        "level": 2
+    },
+    {
+        "romaji": "kenkyuu",
+        "word": "研究",
+        "pron": "けんきゅう",
+        "level": 2
+    }
+]
