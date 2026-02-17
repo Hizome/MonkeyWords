@@ -18,8 +18,6 @@ pub fn main() !void {
 
     std.debug.print("Listening on http://127.0.0.1:3000\n", .{});
 
-    const builtin = @import("builtin");
-
     while (true) {
         const connection = listener.accept() catch |err| {
             std.debug.print("Connection error: {}\n", .{err});
@@ -29,11 +27,7 @@ pub fn main() !void {
         defer conn.stream.close();
 
         var buffer: [4096]u8 = undefined;
-        // std.posix.recv fixes GetLastError(87) on Windows
-        const bytes_read = if (builtin.os.tag == .windows)
-            std.posix.recv(conn.stream.handle, &buffer, 0) catch 0
-        else
-            conn.stream.read(&buffer) catch 0;
+        const bytes_read = std.posix.recv(conn.stream.handle, &buffer, 0) catch 0;
 
         if (bytes_read == 0) continue;
 

@@ -49,7 +49,7 @@ pub fn init(allocator: std.mem.Allocator) !sqlite.Db {
         \\  timestamp INTEGER
         \\);
     ;
-    try db.exec(query, .{}, .{});
+    try db.execDynamic(query, .{}, .{});
     std.debug.print("Database initialized at {s}\n", .{DB_PATH});
 
     try seed(&db, allocator);
@@ -59,7 +59,7 @@ pub fn init(allocator: std.mem.Allocator) !sqlite.Db {
 
 fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
     const count_query = "SELECT count(*) FROM words";
-    var stmt = try db.prepare(count_query);
+    var stmt = try db.prepareDynamic(count_query);
     defer stmt.deinit();
 
     const count = try stmt.one(usize, .{}, .{});
@@ -115,17 +115,17 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
         defer parsed.deinit();
 
         // Transaction for faster inserts
-        try db.exec("BEGIN TRANSACTION", .{}, .{});
+        try db.execDynamic("BEGIN TRANSACTION", .{}, .{});
 
         // Multiplier loop to keep the dataset size larger
         for (0..4) |_| {
             for (parsed.value) |word| {
                 const gram_val = word.gram orelse "";
-                try db.exec(insert_query, .{}, .{ word.romaji, word.word, word.pron, gram_val, word.level, lang_code });
+                try db.execDynamic(insert_query, .{}, .{ word.romaji, word.word, word.pron, gram_val, word.level, lang_code });
             }
         }
 
-        try db.exec("COMMIT", .{}, .{});
+        try db.execDynamic("COMMIT", .{}, .{});
     }
 
     std.debug.print("Seeding complete.\n", .{});
@@ -133,7 +133,7 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
 
 pub fn getRandomWords(db: *sqlite.Db, limit: usize, language: []const u8, level: i32, allocator: std.mem.Allocator) ![]Word {
     const query = "SELECT id, romaji, word, pron, gram, level, language FROM words WHERE language = ? AND level = ? ORDER BY RANDOM() LIMIT ?";
-    var stmt = try db.prepare(query);
+    var stmt = try db.prepareDynamic(query);
     defer stmt.deinit();
 
     var rows = std.ArrayList(Word).empty;
@@ -161,7 +161,7 @@ pub fn insertResult(db: *sqlite.Db, result: Result) !void {
     const query = "INSERT INTO results (wpm, accuracy, timestamp) VALUES (?, ?, ?)";
 
     // Using exec instead of preparing for simplicity
-    try db.exec(query, .{}, .{
+    try db.execDynamic(query, .{}, .{
         result.wpm,
         result.accuracy,
         result.timestamp,
