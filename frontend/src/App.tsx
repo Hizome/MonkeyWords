@@ -558,6 +558,13 @@ const App = () => {
                         return charsToRender;
                       })()}
                     </div>
+                    {/* Gender Indicator Bar */}
+                    {word.gram && (
+                      <div className={`h-1 w-full rounded-full mt-0.5 transition-colors ${word.gram === '0' ? 'bg-red-400/80' :
+                        word.gram === '1' ? 'bg-blue-400/80' :
+                          word.gram === '2' ? 'bg-yellow-400/80' : 'bg-transparent'
+                        }`} />
+                    )}
                     {/* Bottom Hint: Romaji for JP, nothing/hidden for DE/FR */}
                     <span className="text-sub/40 text-xs mt-1 font-mono opacity-0 group-hover:opacity-100 transition-opacity">
                       {word.romaji}

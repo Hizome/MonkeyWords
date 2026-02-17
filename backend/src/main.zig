@@ -94,16 +94,12 @@ fn handleGetWords(database: *db.sqlite.Db, stream: std.net.Stream, allocator: st
         }
     }
 
-    const words = try db.getRandomWords(database, 10, language, level, allocator);
-    defer {
-        for (words) |word| {
-            allocator.free(word.romaji);
-            allocator.free(word.word);
-            allocator.free(word.pron);
-            allocator.free(word.language);
-        }
-        allocator.free(words);
-    }
+    var arena = std.heap.ArenaAllocator.init(allocator);
+    defer arena.deinit();
+    const arena_allocator = arena.allocator();
+
+    const words = try db.getRandomWords(database, 10, language, level, arena_allocator);
+    // No need to manually free individual words or fields, arena handles it.
 
     var out: std.io.Writer.Allocating = .init(allocator);
     defer out.deinit();

@@ -3,180 +3,210 @@
         "romaji": "",
         "word": "House",
         "pron": "Haus",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Dog",
         "pron": "Hund",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Cat",
         "pron": "Katze",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Car",
         "pron": "Auto",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Tree",
         "pron": "Baum",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Water",
         "pron": "Wasser",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Bread",
         "pron": "Brot",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Child",
         "pron": "Kind",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "School",
         "pron": "Schule",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Book",
         "pron": "Buch",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Table",
         "pron": "Tisch",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Chair",
         "pron": "Stuhl",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Apple",
         "pron": "Apfel",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "City",
         "pron": "Stadt",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Country",
         "pron": "Land",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Time",
         "pron": "Zeit",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Hand",
         "pron": "Hand",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Eye",
         "pron": "Auge",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Mouth",
         "pron": "Mund",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Heart",
         "pron": "Herz",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Sun",
         "pron": "Sonne",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Moon",
         "pron": "Mond",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Flower",
         "pron": "Blume",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Money",
         "pron": "Geld",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Work",
         "pron": "Arbeit",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Friend",
         "pron": "Freund",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Life",
         "pron": "Leben",
+        "gram": "2",
         "level": 1
     },
     {
         "romaji": "",
         "word": "World",
         "pron": "Welt",
+        "gram": "1",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Way",
         "pron": "Weg",
+        "gram": "0",
         "level": 1
     },
     {
         "romaji": "",
         "word": "Name",
         "pron": "Name",
+        "gram": "0",
         "level": 1
     }
 ]

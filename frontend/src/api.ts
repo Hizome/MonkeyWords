@@ -7,6 +7,7 @@ export interface Word {
     romaji: string;
     word: string;
     pron: string;
+    gram: string;
     level: number;
 }
 

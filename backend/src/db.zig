@@ -9,6 +9,7 @@ pub const Word = struct {
     romaji: []const u8,
     word: []const u8,
     pron: []const u8,
+    gram: []const u8,
     level: i32,
     language: []const u8,
 };
@@ -37,6 +38,7 @@ pub fn init(allocator: std.mem.Allocator) !sqlite.Db {
         \\  romaji TEXT NOT NULL, 
         \\  word TEXT NOT NULL, 
         \\  pron TEXT NOT NULL, 
+        \\  gram TEXT NOT NULL DEFAULT '',
         \\  level INTEGER NOT NULL,
         \\  language TEXT NOT NULL DEFAULT 'jp'
         \\);
@@ -67,7 +69,7 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
 
     std.debug.print("Seeding database from JSON files...\n", .{});
 
-    const insert_query = "INSERT INTO words (romaji, word, pron, level, language) VALUES (?, ?, ?, ?, ?)";
+    const insert_query = "INSERT INTO words (romaji, word, pron, gram, level, language) VALUES (?, ?, ?, ?, ?, ?)";
 
     // Open seeds directory
     var seeds_dir = try std.fs.cwd().openDir("data/seeds", .{ .iterate = true });
@@ -80,6 +82,7 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
         romaji: []const u8,
         word: []const u8,
         pron: []const u8,
+        gram: ?[]const u8 = null,
         level: i32,
     };
 
@@ -108,7 +111,7 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
         _ = try file.readAll(buffer);
 
         // Parse JSON
-        const parsed = try std.json.parseFromSlice([]WordJson, allocator, buffer, .{});
+        const parsed = try std.json.parseFromSlice([]WordJson, allocator, buffer, .{ .ignore_unknown_fields = true });
         defer parsed.deinit();
 
         // Transaction for faster inserts
@@ -117,7 +120,8 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
         // Multiplier loop to keep the dataset size larger
         for (0..4) |_| {
             for (parsed.value) |word| {
-                try db.exec(insert_query, .{}, .{ word.romaji, word.word, word.pron, word.level, lang_code });
+                const gram_val = word.gram orelse "";
+                try db.exec(insert_query, .{}, .{ word.romaji, word.word, word.pron, gram_val, word.level, lang_code });
             }
         }
 
@@ -128,7 +132,7 @@ fn seed(db: *sqlite.Db, allocator: std.mem.Allocator) !void {
 }
 
 pub fn getRandomWords(db: *sqlite.Db, limit: usize, language: []const u8, level: i32, allocator: std.mem.Allocator) ![]Word {
-    const query = "SELECT id, romaji, word, pron, level, language FROM words WHERE language = ? AND level = ? ORDER BY RANDOM() LIMIT ?";
+    const query = "SELECT id, romaji, word, pron, gram, level, language FROM words WHERE language = ? AND level = ? ORDER BY RANDOM() LIMIT ?";
     var stmt = try db.prepare(query);
     defer stmt.deinit();
 
@@ -138,6 +142,7 @@ pub fn getRandomWords(db: *sqlite.Db, limit: usize, language: []const u8, level:
             allocator.free(item.romaji);
             allocator.free(item.word);
             allocator.free(item.pron);
+            allocator.free(item.gram);
             allocator.free(item.language);
         }
         rows.deinit(allocator);
