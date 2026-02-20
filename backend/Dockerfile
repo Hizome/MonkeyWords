@@ -7,7 +7,6 @@ WORKDIR /app
 
 # Copy the build file, dependencies, and seed data
 COPY build.zig build.zig.zon ./
-COPY deps deps/
 COPY data data/
 
 # First build step just downloads dependencies
