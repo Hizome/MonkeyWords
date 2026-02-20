@@ -7,16 +7,31 @@ pub fn main() !void {
     defer _ = gpa.deinit();
     const allocator = gpa.allocator();
 
-    var database = db.init(allocator) catch |err| {
+    var db_path_alloc: ?[:0]const u8 = null;
+    const db_path: [:0]const u8 = if (std.posix.getenv("DATA_DIR")) |data_dir| blk: {
+        const formatted = try std.fmt.allocPrint(allocator, "{s}/db.sqlite", .{data_dir});
+        defer allocator.free(formatted);
+        db_path_alloc = try allocator.dupeZ(u8, formatted);
+        break :blk db_path_alloc.?;
+    } else "data/db.sqlite";
+
+    defer if (db_path_alloc) |p| allocator.free(p);
+
+    var database = db.init(allocator, db_path) catch |err| {
         std.debug.print("Failed to initialize database: {}\n", .{err});
         return err;
     };
 
-    const address = try std.net.Address.parseIp4("127.0.0.1", 3000);
+    var port: u16 = 3000;
+    if (std.posix.getenv("PORT")) |port_str| {
+        port = std.fmt.parseInt(u16, port_str, 10) catch 3000;
+    }
+
+    const address = try std.net.Address.parseIp4("0.0.0.0", port);
     var listener = try address.listen(.{ .reuse_address = true });
     defer listener.deinit();
 
-    std.debug.print("Listening on http://127.0.0.1:3000\n", .{});
+    std.debug.print("Listening on http://0.0.0.0:{}\n", .{port});
 
     while (true) {
         const connection = listener.accept() catch |err| {

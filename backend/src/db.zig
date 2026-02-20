@@ -21,9 +21,9 @@ pub const Result = struct {
     timestamp: i64,
 };
 
-pub fn init(allocator: std.mem.Allocator) !sqlite.Db {
+pub fn init(allocator: std.mem.Allocator, path: [:0]const u8) !sqlite.Db {
     var db = try sqlite.Db.init(.{
-        .mode = sqlite.Db.Mode{ .File = DB_PATH },
+        .mode = sqlite.Db.Mode{ .File = path },
         .open_flags = .{
             .write = true,
             .create = true,
