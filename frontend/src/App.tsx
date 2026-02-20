@@ -19,8 +19,6 @@ const THEMES = [
 
 const WORDS_PER_PAGE = 14;
 
-type LanguageCode = typeof LANGUAGES[number]['code'];
-
 const App = () => {
   const [language, setLanguage] = useState<string>('jp');
   const [level, setLevel] = useState<number>(1);
@@ -269,18 +267,8 @@ const App = () => {
     }
   };
 
-  const currentWpm = useMemo(() => {
-    if (!startTime || finished) return stats.wpm;
-    const durationMinutes = (Date.now() - startTime) / 60000;
-    // For JP: confirmedKana length. For DE/FR/RU/ES: rawInput length.
-    const currentTypedLen = language === 'jp' ? confirmedKana.length : rawInput.length;
-
-    const processedChars = pastCharsCount + words.slice(0, currentIndex).reduce((acc, w) => acc + w.pron.length, 0) + currentTypedLen;
-    return Math.round((processedChars / 5) / durationMinutes) || 0;
-  }, [startTime, finished, currentIndex, confirmedKana, rawInput, words, stats.wpm, language, pastCharsCount]);
-
   return (
-    <div className="min-h-screen bg-background text-text p-8 font-sans transition-colors duration-300 flex flex-col items-center justify-center select-none" onKeyDown={(e) => {
+    <div className="min-h-screen bg-background text-text p-8 font-sans transition-colors duration-300 flex flex-col items-center justify-center select-none" onKeyDown={() => {
       if (finished) return;
       inputRef.current?.focus();
     }} onClick={() => {
@@ -289,7 +277,7 @@ const App = () => {
     }}>
       {/* GitHub Link - Top Left */}
       <a
-        href="https://github.com/yourusername/monkeywords"
+        href="https://github.com/Hizome/MonkeyWords"
         target="_blank"
         rel="noopener noreferrer"
         className="fixed top-8 left-8 z-50 p-2 bg-sub/10 hover:bg-sub/20 rounded-lg transition-all text-sub hover:text-text border border-sub/5 shadow-sm group"
