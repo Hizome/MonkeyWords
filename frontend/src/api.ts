@@ -1,6 +1,7 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://127.0.0.1:3000/api';
+// Use VITE_API_BASE_URL from environment, fallback to localhost for local dev
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://127.0.0.1:3000/api';
 
 export interface Word {
     id: number;
