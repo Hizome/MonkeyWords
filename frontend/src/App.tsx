@@ -53,8 +53,22 @@ const App = () => {
   const [inputHistory, setInputHistory] = useState<string[]>([]);
   const [pastCharsCount, setPastCharsCount] = useState(0);
   const [wordPool, setWordPool] = useState<Word[]>([]);
+  const [isConnecting, setIsConnecting] = useState(true);
+  const [connectionMessage, setConnectionMessage] = useState('正在连接后端服务...');
 
   const inputRef = useRef<HTMLInputElement>(null);
+  const reconnectTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const clearReconnectTimer = () => {
+    if (reconnectTimerRef.current) {
+      clearTimeout(reconnectTimerRef.current);
+      reconnectTimerRef.current = null;
+    }
+  };
+
+  useEffect(() => {
+    return () => clearReconnectTimer();
+  }, []);
 
   useEffect(() => {
     loadWords(language, level);
@@ -76,12 +90,20 @@ const App = () => {
     return pageWords;
   };
 
-  const loadWords = async (lang: string, lvl: number = 1) => {
+  const loadWords = async (lang: string, lvl: number = 1, showConnecting = true) => {
+    clearReconnectTimer();
+    if (showConnecting) {
+      setIsConnecting(true);
+      setConnectionMessage('正在连接后端服务...');
+    }
+
     try {
       const data = await fetchWords(lang, lvl); // Fetches 10 words
       setWordPool(data);
       const pageWords = generatePageWords(data, WORDS_PER_PAGE);
       setWords(pageWords);
+      setIsConnecting(false);
+      setConnectionMessage('');
 
       setCurrentIndex(0);
       setRawInput('');
@@ -92,6 +114,11 @@ const App = () => {
       setPastCharsCount(0);
     } catch (error) {
       console.error('Failed to load words:', error);
+      setIsConnecting(true);
+      setConnectionMessage('后端连接中，正在重试...');
+      reconnectTimerRef.current = setTimeout(() => {
+        void loadWords(lang, lvl, false);
+      }, 1500);
     }
   };
 
@@ -434,7 +461,13 @@ const App = () => {
           <button onClick={() => loadWords(language, level)} className="hover:text-text transition-colors">Restart (Esc)</button>
         </div>
 
-        {finished ? (
+        {isConnecting ? (
+          <div className="h-80 flex flex-col items-center justify-center text-center">
+            <div className="loading-spinner mb-5" />
+            <h2 className="text-2xl font-bold text-main mb-2">加载中</h2>
+            <p className="text-sub font-mono text-sm">{connectionMessage}</p>
+          </div>
+        ) : finished ? (
           <div className="text-center">
             <h2 className="text-6xl font-bold text-main mb-4">Results</h2>
             <div className="flex justify-center gap-16 text-sub">
